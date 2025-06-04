@@ -121,3 +121,21 @@ See [`environment.yml`](./environment.yml) for all required packages (GPAW, ASE,
 ## 🧑‍🔬 Authors
 
 This project was prepared for junior-level training as a guideline on how to model defects in materials using computational approaches and how to simulate microscopy images at the atomic scale.
+
+## 📚 References
+
+This project makes use of the following key scientific software:
+
+- **GPAW** – A Python-based DFT code using real-space grids and PAW formalism  
+  *J. Enkovaara et al., J. Phys.: Condens. Matter 22, 253202 (2010)*  
+  [https://wiki.fysik.dtu.dk/gpaw/](https://wiki.fysik.dtu.dk/gpaw/)
+
+- **ASE (Atomic Simulation Environment)** – Python tools for setting up, running, and analyzing atomistic simulations  
+  *S. R. Bahn and K. W. Jacobsen, Comput. Sci. Eng., 4, 56 (2002)*  
+  [https://wiki.fysik.dtu.dk/ase/](https://wiki.fysik.dtu.dk/ase/)
+
+- **abTEM** – A transmission electron microscopy simulation code based on the multislice algorithm  
+  *Jonas B. E. Petersen et al., Ultramicroscopy 239, 113566 (2022)*  
+  [https://abtem.readthedocs.io](https://abtem.readthedocs.io)
+
+Please cite these tools appropriately in your own publications if you build on this workflow.
