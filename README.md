@@ -74,7 +74,7 @@ cd ../3_analysis
 python interatomic_distances.py
 ```
 
-### 📸 4. STEM Simulation in Google Colab
+### 4. STEM Simulation in Google Colab
 
 You can simulate STEM images using **abTEM in Google Colab**. Two standalone notebooks are provided:
 
