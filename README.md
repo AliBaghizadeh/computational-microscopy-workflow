@@ -7,27 +7,26 @@ It is designed for educational use by junior researchers, and runs on:
 - **Linux / WSL2 on Windows**
 - **Google Colab (for abTEM image simulation)**
 
-## 📊 Workflow Overview
+## 🧠 Why This Project Matters
 
-1. **Build Supercell**: Start from a 4H-SiC CIF file and build a 2×2×1 supercell. Randomly replace two carbon atoms with oxygen atoms to simulate diffusion.  
-   🔹 *Note:* The supercell size is critical. It depends on the intended zone axis for STEM simulation, the symmetry of the 4H-SiC lattice, and your available computational resources.
+Microscopy-based defect characterization increasingly demands synergy between **atomic-scale simulations** and **experimental STEM imaging**. However, junior researchers often encounter major barriers when trying to bridge DFT and microscopy.
 
-2. **Static SCF Calculation**: Perform a static self-consistent field (SCF) calculation using GPAW to pre-converge the charge density and wavefunctions.  
-   🔹 *This step prepares the structure for faster relaxation by generating a `.gpw` file that includes preconverged states.*
+### 🔧 Pain Points in the Field
 
-3. **Geometry Relaxation**: Using the SCF results, relax atomic positions via force minimization (using BFGS optimizer).  
-   🔹 *Note:* This is a simplified relaxation workflow. It does **not** optimize the unit cell dimensions or k-point mesh, and is **not intended** for high-accuracy total energy or band structure calculations. It's mainly designed to generate realistic atomic coordinates for image simulation.  
-   🔹 For more accurate simulations, consult the [GPAW documentation](https://wiki.fysik.dtu.dk/gpaw/) and adjust cutoff energies, `kpts`, convergence thresholds, and relaxation strategies accordingly.
+- ⚙️ **Fragmented toolchains**: DFT codes like GPAW and imaging tools like abTEM have different data models and expectations, making integration nontrivial.
+- 📉 **Limited examples for defect modeling + STEM**: Few educational resources show a full pipeline from defect introduction → relaxation → STEM contrast simulation.
+- 💻 **Complex environments**: Installing and configuring GPAW, especially on Windows, is error-prone without HPC experience.
+- ❓ **Lack of reproducible starter projects**: Most examples are either too complex or too abstract to reproduce on a laptop.
 
-4. **Save Relaxed Structure**: After relaxation, the script automatically checks convergence and exports the relaxed atomic coordinates to `relaxed_positions_only.cif`.  
-   🔹 *This file will be used in the STEM image simulation step.*
+### ✅ What This Project Offers
 
-5. **Distance Analysis**: Analyze Si–Si interatomic distances using a simple script.  
-   🔹 This helps verify that relaxation did not produce unphysical configurations.  
-   🔹 You can extend this analysis to measure bond lengths, angular distortions, or compare pre/post-relaxation structures.
+This project was designed specifically to help newcomers overcome those challenges:
 
-6. **Export to STEM Simulation**: Upload the relaxed CIF to Google Colab and open the abTEM simulation notebook.  
-   🔹 In the notebook, align the structure along a chosen zone axis, expand it if necessary, and prepare it for image simulation.
+- 🔁 **End-to-end reproducibility**: Includes every step from structure setup to image generation, with working input/output files.
+- 🧪 **Realistic but simplified modeling**: Focuses on meaningful yet computationally affordable simulations.
+- 🧑‍🏫 **Educational clarity**: Modular scripts, in-code comments, and clearly documented workflows suitable for courses and research training.
+- 💡 **Cross-platform setup**: Runs on Linux or WSL2 + Google Colab, so anyone can get started — even without HPC access.
+- 🔄 **Extendable design**: Easily adapted for different dopants, host materials, or imaging geometries.
 
 7. **STEM Simulation (abTEM)**: Simulate ABF, MAADF, and HAADF contrast using abTEM in Colab.  
    abTEM supports two main approaches:  
