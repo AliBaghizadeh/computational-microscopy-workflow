@@ -127,7 +127,7 @@ This project was prepared for junior-level training as a guideline on how to mod
 This project makes use of the following key scientific software:
 
 - **GPAW** – A Python-based DFT code using real-space grids and PAW formalism  
-  *J. Enkovaara et al., J. Phys.: Condens. Matter 22, 253202 (2010)*  
+  *Jens Jørgen Mortensen, Ask Hjorth Larsen, Mikael Kuisma et al. GPAW: An open Python package for electronic structure calculations featured, J. Chem. Phys. 160, 092503 (2024)*  
   [https://wiki.fysik.dtu.dk/gpaw/](https://wiki.fysik.dtu.dk/gpaw/)
 
 - **ASE (Atomic Simulation Environment)** – Python tools for setting up, running, and analyzing atomistic simulations  
@@ -135,7 +135,7 @@ This project makes use of the following key scientific software:
   [https://wiki.fysik.dtu.dk/ase/](https://wiki.fysik.dtu.dk/ase/)
 
 - **abTEM** – A transmission electron microscopy simulation code based on the multislice algorithm  
-  *Jonas B. E. Petersen et al., Ultramicroscopy 239, 113566 (2022)*  
+  *Jacob Madsen and Toma Susi. The abTEM code: transmission electron microscopy from first principles. Open Research Europe 1:24, 2021.*  
   [https://abtem.readthedocs.io](https://abtem.readthedocs.io)
 
 Please cite these tools appropriately in your own publications if you build on this workflow.
