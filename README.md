@@ -13,10 +13,11 @@ Microscopy-based defect characterization increasingly demands synergy between **
 
 ### 🔧 Pain Points in the Field
 
-- ⚙️ **Fragmented toolchains**: DFT codes like GPAW and imaging tools like abTEM have different data models and expectations, making integration nontrivial.
-- 📉 **Limited examples for defect modeling + STEM**: Few educational resources show a full pipeline from defect introduction → relaxation → STEM contrast simulation.
+- ⚙️ **Heavyweight DFT tools vs practical needs:**: While high-accuracy DFT codes like VASP or Wien2k are standard in academia, they are computationally intensive and often overkill for generating atomic models used in microscopy image simulations. In contrast, GPAW/ASE provides a Python-based, lightweight alternative with sufficient accuracy for many practical defect studies, and supports scripting for automated exploration of multiple defect configurations.
+- 📦 **Limited support for batch STEM simulations**: Many STEM simulation packages—especially closed-source or GUI-driven ones—lack automation capabilities for high-throughput simulations. abTEM, being open-source and Python-native, enables flexible, scriptable workflows to simulate large sets of images under varying conditions (defocus, aberrations, zone axis, thickness, etc.).
+- 📉 **Limited examples for defect modeling + STEM**: There is a shortage of beginner-friendly, end-to-end examples that walk users through the full process: from structure setup → DFT relaxation → STEM image generation. This project fills that gap.
 - 💻 **Complex environments**: Installing and configuring GPAW, especially on Windows, is error-prone without HPC experience.
-- ❓ **Lack of reproducible starter projects**: Most examples are either too complex or too abstract to reproduce on a laptop.
+- ❓ **Lack of reproducible starter projects**: Most DFT + STEM workflows are either highly customized or too abstract for newcomers to replicate on a laptop or in Google Colab. This project is designed to be fully reproducible on modest computing setups with annotated scripts and notebooks.
 
 ### ✅ What This Project Offers
 
