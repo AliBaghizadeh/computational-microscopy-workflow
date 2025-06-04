@@ -1,6 +1,7 @@
 # Oxygen Diffusion in 4H-SiC via DFT and STEM Simulation
 
-This project demonstrates how to model and simulate oxygen diffusion in 4H-SiC using **Computational Materials (with GPAW/ASE)** and simulate corresponding **STEM images using abTEM**.
+This project demonstrates how to model and simulate oxygen diffusion in 4H-SiC using **Computational Materials (with GPAW/ASE)** and simulate corresponding **atomic resolution STEM images using abTEM**.
+The choice of oxygen diffusion in 4H-SiC is solely for semiconductor metrology, but the workflow can be used for many other materials. 
 
 It is designed for educational use by junior researchers, and runs on:
 - **Linux / WSL2 on Windows**
