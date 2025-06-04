@@ -11,12 +11,12 @@ It is designed for educational use by junior researchers, and runs on:
 
 1. **Build Supercell**: Start from 4H-SiC CIF, build 2x2x1 supercell, introduce O dopants.    
    The size of the supercell is very important, and depends on factors like the zone axis for image simulation, the symmetry of the lattice, and of course, your computational resources.
-3. **SCF + Relaxation**: Perform static and relaxed DFT calculations using GPAW.     
+2. **SCF + Relaxation**: Perform static and relaxed DFT calculations using GPAW.     
    This approach is just a demo. It does not optimize lattice parameters, and it is not intended to relax atomic positions for the purpose of electronic structure or very high-accuracy coordinate calculations.      
    The best strategy is to read the manual of the GPAW for the possible choices of parameters to reduce or increase the accuracy of the final results. Again, mind your computation resources.     
-5. **Distance Analysis**: Analyze Si–Si interatomic distances.
+3. **Distance Analysis**: Analyze Si–Si interatomic distances.
    This is just a short script allowing analyzing the intratomic distances. The analysis can be expanded to other things like comparing original and relaxed cif files, too.
-7. **STEM Simulation**: Simulate ABF, MAADF, HAADF contrast with abTEM in Colab.  
+4. **STEM Simulation**: Simulate ABF, MAADF, HAADF contrast with abTEM in Colab.  
    The **abTEM** package supports two main approaches for STEM image simulation:
 
    - **Flexible (4D-STEM-like) Simulation**:  
