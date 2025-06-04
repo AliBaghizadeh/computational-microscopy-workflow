@@ -120,4 +120,4 @@ See [`environment.yml`](./environment.yml) for all required packages (GPAW, ASE,
 
 ## 🧑‍🔬 Authors
 
-This project was prepared for junior-level training in atomic-scale materials modeling.
+This project was prepared for junior-level training as a guideline on how to model defects in materials using computational approaches and how to simulate microscopy images at the atomic scale.
