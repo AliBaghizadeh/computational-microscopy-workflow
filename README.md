@@ -50,15 +50,15 @@ conda activate sic-dft
 
 ```bash
 cd 1_structure
-python create_SiC_222.py
+python create_SiC_supercell.py
 ```
 
 ### 2. Static and Relaxation Calculation
 
 ```bash
 cd ../2_scf_relax
-python static_SiC_222.py
-python relax_static_SiC.py
+python static_SiC_supercell.py
+python relax_static_SiC_supercell.py
 ```
 
 ### 3. Analyze Interatomic Distances
