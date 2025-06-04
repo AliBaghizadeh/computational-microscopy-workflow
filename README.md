@@ -131,7 +131,7 @@ This project makes use of the following key scientific software:
   [https://wiki.fysik.dtu.dk/gpaw/](https://wiki.fysik.dtu.dk/gpaw/)
 
 - **ASE (Atomic Simulation Environment)** – Python tools for setting up, running, and analyzing atomistic simulations  
-  *S. R. Bahn and K. W. Jacobsen, Comput. Sci. Eng., 4, 56 (2002)*  
+  *Ask Hjorth Larsen et al, The Atomic Simulation Environment—A Python library for working with atoms, J. Phys.: Condens. Matter Vol. 29 273002, 2017*  
   [https://wiki.fysik.dtu.dk/ase/](https://wiki.fysik.dtu.dk/ase/)
 
 - **abTEM** – A transmission electron microscopy simulation code based on the multislice algorithm  
