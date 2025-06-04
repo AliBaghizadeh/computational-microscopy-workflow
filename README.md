@@ -10,9 +10,10 @@ It is designed for educational use by junior researchers, and runs on:
 ## 📊 Workflow Overview
 
 1. **Build Supercell**: Start from 4H-SiC CIF, build 2x2x1 supercell, introduce O dopants.
-2. **SCF + Relaxation**: Perform static and relaxed DFT calculations using GPAW.
-3. **Distance Analysis**: Analyze Si–Si interatomic distances.
-4. **STEM Simulation**: Simulate ABF, MAADF, HAADF contrast with abTEM in Colab.
+   The size of the supercell is very important, and depends on factors like the zone axis for image simulation, the symmetry of the lattice, and of course, your computational resources.
+3. **SCF + Relaxation**: Perform static and relaxed DFT calculations using GPAW.
+4. **Distance Analysis**: Analyze Si–Si interatomic distances.
+5. **STEM Simulation**: Simulate ABF, MAADF, HAADF contrast with abTEM in Colab.
 
 ---
 
