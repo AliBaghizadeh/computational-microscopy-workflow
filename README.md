@@ -9,25 +9,31 @@ It is designed for educational use by junior researchers, and runs on:
 
 ## 📊 Workflow Overview
 
-1. **Build Supercell**: Start from 4H-SiC CIF, build 2x2x1 supercell, introduce O dopants.    
-   The size of the supercell is very important, and depends on factors like the zone axis for image simulation, the symmetry of the lattice, and of course, your computational resources.
-2. **SCF + Relaxation**: Perform static and relaxed DFT calculations using GPAW.     
-   This approach is just a demo. It does not optimize lattice parameters, and it is not intended to relax atomic positions for the purpose of electronic structure or very high-accuracy coordinate calculations.      
-   The best strategy is to read the manual of the GPAW for the possible choices of parameters to reduce or increase the accuracy of the final results. Again, mind your computation resources.     
-3. **Distance Analysis**: Analyze Si–Si interatomic distances.
-   This is just a short script allowing analyzing the intratomic distances. The analysis can be expanded to other things like comparing original and relaxed cif files, too.
-4. **STEM Simulation**: Simulate ABF, MAADF, HAADF contrast with abTEM in Colab.  
-   The **abTEM** package supports two main approaches for STEM image simulation:
+1. **Build Supercell**: Start from a 4H-SiC CIF file and build a 2×2×1 supercell. Randomly replace two carbon atoms with oxygen atoms to simulate diffusion.  
+   🔹 *Note:* The supercell size is critical. It depends on the intended zone axis for STEM simulation, the symmetry of the 4H-SiC lattice, and your available computational resources.
 
-   - **Flexible (4D-STEM-like) Simulation**:  
-     This comprehensive method simulates the full diffraction pattern at each probe position and allows **post-acquisition integration** of signals over any detector angles. It’s similar to 4D-STEM and ideal for exploring how different angular       ranges affect image contrast.  
-     In this project, we use this to generate **ABF, MAADF, and HAADF** contrast maps by integrating over selected annular angle ranges.
+2. **Static SCF Calculation**: Perform a static self-consistent field (SCF) calculation using GPAW to pre-converge the charge density and wavefunctions.  
+   🔹 *This step prepares the structure for faster relaxation by generating a `.gpw` file that includes preconverged states.*
 
-   - **Direct (Single-Detector) Simulation**:  
-     This more traditional method simulates STEM images by scanning a probe across the sample and collecting signal using predefined detector geometries (like fixed ABF or HAADF detectors).  
-     This is faster and commonly used for generating reproducible, publication-style images with specific detector settings.
+3. **Geometry Relaxation**: Using the SCF results, relax atomic positions via force minimization (using BFGS optimizer).  
+   🔹 *Note:* This is a simplified relaxation workflow. It does **not** optimize the unit cell dimensions or k-point mesh, and is **not intended** for high-accuracy total energy or band structure calculations. It's mainly designed to generate realistic atomic coordinates for image simulation.  
+   🔹 For more accurate simulations, consult the [GPAW documentation](https://wiki.fysik.dtu.dk/gpaw/) and adjust cutoff energies, `kpts`, convergence thresholds, and relaxation strategies accordingly.
 
-   The simulation is done in **Google Colab** to take advantage of GPU acceleration (via CuPy) and avoid local hardware limitations. Just upload the `relaxed_positions_only.cif` file and run the notebook step-by-step.
+4. **Save Relaxed Structure**: After relaxation, the script automatically checks convergence and exports the relaxed atomic coordinates to `relaxed_positions_only.cif`.  
+   🔹 *This file will be used in the STEM image simulation step.*
+
+5. **Distance Analysis**: Analyze Si–Si interatomic distances using a simple script.  
+   🔹 This helps verify that relaxation did not produce unphysical configurations.  
+   🔹 You can extend this analysis to measure bond lengths, angular distortions, or compare pre/post-relaxation structures.
+
+6. **Export to STEM Simulation**: Upload the relaxed CIF to Google Colab and open the abTEM simulation notebook.  
+   🔹 In the notebook, align the structure along a chosen zone axis, expand it if necessary, and prepare it for image simulation.
+
+7. **STEM Simulation (abTEM)**: Simulate ABF, MAADF, and HAADF contrast using abTEM in Colab.  
+   abTEM supports two main approaches:  
+   - **Flexible 4D-STEM Simulation**: Generates full diffraction patterns at each scan position and allows post-hoc integration over detector angles.  
+   - **Direct STEM Simulation**: Uses pre-defined annular detectors for ABF or HAADF, suitable for fast, publication-ready images.  
+   🔹 This notebook is GPU-accelerated using CuPy and runs efficiently in Colab.
 
 ---
 
@@ -50,15 +56,15 @@ conda activate sic-dft
 
 ```bash
 cd 1_structure
-python create_SiC_supercell.py
+python create_SiC_222.py
 ```
 
 ### 2. Static and Relaxation Calculation
 
 ```bash
 cd ../2_scf_relax
-python static_SiC_supercell.py
-python relax_static_SiC_supercell.py
+python static_SiC_222.py
+python relax_static_SiC.py
 ```
 
 ### 3. Analyze Interatomic Distances
@@ -68,9 +74,30 @@ cd ../3_analysis
 python interatomic_distances.py
 ```
 
-### 4. STEM Simulation in Colab
+### 📸 4. STEM Simulation in Google Colab
 
-Open [`abTEM_image_simulation_SiC_ver2.ipynb`](./4_stem_simulation/abTEM_image_simulation_SiC_ver2.ipynb) in [Google Colab](https://colab.research.google.com), upload `relaxed_positions_only.cif` and follow notebook instructions.
+You can simulate STEM images using **abTEM in Google Colab**. Two standalone notebooks are provided:
+
+#### ✅ Option 1: 4D-STEM with Flexible Detectors
+- **File**: [`abTEM_4D_STEM_flexible_detectors.ipynb`](./4_stem_simulation/abTEM_4D_STEM_flexible_detectors.ipynb)
+- Simulates full scattering using `FlexibleAnnularDetector`
+- Performs radial integration to generate ABF, MAADF, HAADF images
+
+#### ✅ Option 2: Fast Scan with Fixed Detectors
+- **File**: [`abTEM_fast_scan.ipynb`](./4_stem_simulation/abTEM_fast_scan.ipynb)
+- Uses `AnnularDetector` for faster, predefined ABF + HAADF scans
+
+#### 🧪 To Use Either Notebook:
+1. Open the notebook in [Google Colab](https://colab.research.google.com/)
+2. Upload your **`relaxed_positions_only.cif`** file when prompted
+3. Follow the step-by-step instructions inside the notebook:
+   - Installs required packages
+   - Builds zone-aligned structure
+   - Sets up probe, scan, detectors
+   - Simulates and visualizes images
+   - Saves `.png` and `.npy` outputs
+
+Each notebook is **self-contained**, **Colab-compatible**, and includes comments to guide new users.
 
 ---
 
