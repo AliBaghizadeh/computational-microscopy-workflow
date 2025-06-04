@@ -91,9 +91,9 @@ You can simulate STEM images using **abTEM in Google Colab**. Two standalone not
 1. Open the notebook in [Google Colab](https://colab.research.google.com/)
 2. Upload your **`relaxed_positions_only.cif`** file when prompted
 3. Follow the step-by-step instructions inside the notebook:
-   - Installs required packages
+   - Installs required packages (then restart session)
    - Builds zone-aligned structure
-   - Sets up probe, scan, detectors
+   - Sets up probe, scan, and detectors
    - Simulates and visualizes images
    - Saves `.png` and `.npy` outputs
 
